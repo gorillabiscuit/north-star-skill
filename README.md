@@ -37,7 +37,7 @@ Clone this repo into your user skills directory so it's available in every
 project:
 
 ```bash
-git clone git@github.com:gorillabiscuit/north-star-skill.git ~/.claude/skills/north-star
+git clone https://github.com/gorillabiscuit/north-star-skill.git ~/.claude/skills/north-star
 ```
 
 Then in any project, invoke it with:
