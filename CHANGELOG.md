@@ -3,6 +3,31 @@
 All notable changes to this skill are documented here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## v0.4.0 — 2026-05-29
+
+Generalises the ritual from code-only to any project shape. The interview
+logic is unchanged; only the inputs (what counts as evidence) and outputs
+(where the result lands) are now shape-aware. One skill, not two.
+See docs/v0.4-rationale.md.
+
+- Phase 0 split into two sequential questions: shape (code / document /
+  mixed) and state (greenfield / exists). Shape drives evidence and
+  destination; state drives 1A vs 1B.
+- 1B.0 evidence list branches by shape, with the universal principle
+  stated up front. Adds an explicit chat-only branch: the agent has no
+  file access and asks the human to paste the material.
+- 1B.2 examples branched into parallel CODE and DOCUMENT lists.
+- Neutral vocabulary pass: 1B.3 reframed as "what's hard to copy, in
+  practice", with the moat / defensibility framing kept as a marked
+  business reading. Default tone aimed at a non-developer, non-founder.
+- Phase 4 destination detection: code → PROJECT.md; document → primary
+  strategy doc (ask if absent); chat-only → printed markdown block.
+  Retrofit amendment discipline now described for all three shapes.
+- North Star contract section rewritten: the mechanism described once,
+  abstractly, then three concrete forms (repo dotfile, visible working
+  doc, in-conversation reprint).
+- Added docs/v0.4-rationale.md.
+
 ## v0.3.0 — 2026-05-29
 
 Hardens the retrofit ritual against the helpme2c failure mode (a North Star
