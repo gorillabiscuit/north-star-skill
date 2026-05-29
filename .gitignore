@@ -1,0 +1,22 @@
+# macOS / editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Dependencies (in case tooling is added later)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build / packaging artifacts
+*.zip
+dist/
+build/
+
+# Misc
+.eslintcache
