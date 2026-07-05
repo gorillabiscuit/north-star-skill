@@ -12,14 +12,17 @@ _(added retrofit, 2026-07-05)_
   while the goal drifts out of frame. It lives where enforcement can
   live: Claude Code, for code and document projects alike.
 
-- **Metric.** Per week, the number of work units across the
-  maintainer's projects whose one-sentence North Star trace survives
-  independent review. (Defaults, open to challenge: "per week" is the
-  measurement frame, not the definition of success; a "work unit" is a
-  commit or PR on a code project, a substantive edit or decision on a
-  document project; "independent review" is a cold-context reviewer or
-  audit, not the authoring session grading itself. Baseline measured
-  2026-07-05 on helpme2c: 0 of 30 commits.)
+- **Metric.** The share of work units whose one-sentence North Star
+  trace survives independent review — scored at every review moment:
+  each pre-PR check for its branch, each project audit for its
+  history. No calendar window: solo AI-assisted work is bursty (a
+  whole project can land in a day), so the checkpoints are
+  work-driven, not time-driven. (Defaults, open to challenge: a "work
+  unit" is a commit or PR on a code project, a substantive edit or
+  decision on a document project; "independent review" is a
+  cold-context reviewer or audit, not the authoring session grading
+  itself. First baseline sample: helpme2c, 2026-07-05 — 0 of 30
+  recent commits traced.)
 
 - **Companion.** What this means for what we build: enforcement
   machinery before interview polish — hooks that block feature work
