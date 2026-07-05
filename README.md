@@ -51,16 +51,39 @@ The four artifacts are universal; only the write step branches:
 
 | Surface | How to run it |
 |---|---|
-| Claude Code | clone into `~/.claude/skills/north-star` (below) |
+| Claude Code (recommended) | install as a plugin via the [gorillabiscuit marketplace](https://github.com/gorillabiscuit/claude-plugins) (below) — auto-updates, no manual `git pull` |
+| Claude Code (manual) | clone into `~/.claude/skills/north-star` (below) — you own the update step |
 | claude.ai | upload the skill as a zip (below) |
 | Pi | symlink into `~/.pi/agent/prompts` (below) |
 | Cowork | planned — a Cowork plugin wrapper |
 | Any chat (ChatGPT, Gemini, claude.ai web, etc.) | paste the universal prompt from [Use it anywhere](#use-it-anywhere-no-installation) |
 
-### Claude Code (user-level skill)
+### Claude Code — plugin (recommended)
 
-Clone this repo into your user skills directory so it's available in every
-project:
+Installed this way, updates land automatically the next time Claude Code
+starts — no manual `git pull`, no risk of silently running a stale version.
+
+```
+/plugin marketplace add gorillabiscuit/claude-plugins
+/plugin install north-star@gorillabiscuit
+```
+
+Then in any project:
+
+```
+/north-star:north-star
+```
+
+(Claude Code namespaces plugin-provided skills as `<plugin>:<skill>`. Both
+the plugin and the skill inside it are named `north-star`, hence the
+doubled segment.)
+
+To check for updates manually: `/plugin marketplace update gorillabiscuit`.
+
+### Claude Code — manual clone
+
+If you'd rather not add a marketplace, clone this repo directly into your
+user skills directory:
 
 ```bash
 git clone https://github.com/gorillabiscuit/north-star-skill.git ~/.claude/skills/north-star
@@ -72,7 +95,12 @@ Then in any project, invoke it with:
 /north-star
 ```
 
-To update later: `git -C ~/.claude/skills/north-star pull`.
+**This path does not auto-update.** Nothing pulls new commits for you — you
+own that step. To update: `git -C ~/.claude/skills/north-star pull`. If you
+forget, you keep silently running whatever commit you cloned, however old.
+This is the exact failure mode the plugin path above exists to close — if
+that risk doesn't bother you, this route works fine; if it does, use the
+plugin instead.
 
 ### claude.ai
 

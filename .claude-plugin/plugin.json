@@ -1,0 +1,11 @@
+{
+  "name": "north-star",
+  "description": "Structured kickoff interview that converges on a Mission, Metric, Companion, and Boundary for a project of any shape (code, document, or mixed). Reads existing evidence first when work already exists; writes the result to the project's natural home.",
+  "author": {
+    "name": "gorillabiscuit"
+  },
+  "homepage": "https://github.com/gorillabiscuit/north-star-skill",
+  "repository": "https://github.com/gorillabiscuit/north-star-skill",
+  "license": "MIT",
+  "keywords": ["north-star", "product-strategy", "kickoff", "mission-metric", "retrofit"]
+}
