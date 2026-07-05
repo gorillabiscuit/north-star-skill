@@ -3,6 +3,28 @@
 All notable changes to this skill are documented here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## v0.6.0 — 2026-07-05
+
+Scope-cut release, executing the Boundary line of this repo's own North
+Star (PROJECT.md, added 2026-07-05): surfaces outside Claude Code can
+define a star but never enforce one, so the skill stops carrying them.
+Removal only — no interview content changed.
+
+- Removed the chat-paste distribution: the README's "Use it anywhere"
+  universal prompt block (the generated SKILL.md mirror) and its
+  regeneration instructions are gone. SKILL.md is once again the only
+  copy of the ritual.
+- Removed chat-only mode from the ritual itself: the chat-only working-
+  artifact form (in-conversation reprint + memory backup), the 1B.0
+  paste-the-evidence branch, and the Phase 4 / retrofit CHAT-ONLY
+  destinations. The contract now has two forms (repo dotfile, visible
+  working document) and Phase 4 two destinations (PROJECT.md, primary
+  strategy document).
+- Removed claude.ai zip upload and Pi symlink install paths from the
+  README's install matrix.
+- Supported surfaces are now Claude Code (plugin or manual clone) and,
+  when built, Cowork.
+
 ## v0.5.0 — 2026-07-05
 
 Hardens the ritual against the failure mode that motivated the release: a

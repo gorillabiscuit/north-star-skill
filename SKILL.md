@@ -1,7 +1,7 @@
 ---
 name: north-star
-version: 0.5.0
-description: Run a structured kickoff interview to converge on a Mission, Metric, Companion, and Boundary for a project of any shape — code, document, or mixed. Reads the existing evidence first when work already exists. Writes the result to the project's natural home (PROJECT.md for code, the primary strategy document for a document project), or prints a copy-paste block when there is no persistent destination. Use at the start of a new project, or when adopting the convention into an existing one.
+version: 0.6.0
+description: Run a structured kickoff interview to converge on a Mission, Metric, Companion, and Boundary for a project of any shape — code, document, or mixed. Reads the existing evidence first when work already exists. Writes the result to the project's natural home (PROJECT.md for code, the primary strategy document for a document project). Use at the start of a new project, or when adopting the convention into an existing one.
 ---
 
 # North Star kickoff
@@ -23,7 +23,7 @@ Two modes share most of the ritual but diverge at Phase 1:
 
 ## How the AI must run this
 - Announce the version first. Your very first line is exactly:
-  `Running north-star v0.5.0.` — then continue into Phase 0. This one line
+  `Running north-star v0.6.0.` — then continue into Phase 0. This one line
   is how the human catches a stale install: if they know a newer release
   exists and the announced version is older, they update before investing
   in a full ritual run. (Maintainers: this literal and the frontmatter
@@ -47,8 +47,7 @@ Two modes share most of the ritual but diverge at Phase 1:
   what a read-back sounds like, when exactly to reprint — read
   `docs/example-run.md` (an abbreviated worked retrofit run) before
   proceeding. Read it on demand, not by default; it exists to calibrate
-  behaviour, not to be copied verbatim. (Chat-only surfaces without file
-  access: skip this — the ritual text above is self-sufficient.)
+  behaviour, not to be copied verbatim.
 
 ## The North Star contract (working artifact)
 
@@ -83,7 +82,7 @@ contract is the fix, so neither mode goes without it.
   artifact has served its purpose and is retired (see Phase 4 for what
   "retired" means in each form).
 
-**The three forms of the working artifact:**
+**The two forms of the working artifact:**
 
 - **Code project →** a dotfile in the repo: `docs/.north-star-contract.md`.
   The dotfile prefix signals it is ephemeral. Deleted at Phase 4 in the same
@@ -93,27 +92,8 @@ contract is the fix, so neither mode goes without it.
   `Working draft — North Star`. Named visibly so a non-developer reads it as
   the live artifact, not a stray file. Archived or deleted at Phase 4 with
   the human's confirmation.
-- **Chat-only →** no file. The reprint block IS the contract; it lives in
-  the conversation scrollback. The mechanism is the same — single current
-  version, bumped on confirmed update, reprinted at every phase boundary —
-  but the storage is the chat itself.
 
-  **Before shrugging at data loss, check what persistence you actually
-  have.** Many chat surfaces now carry a memory feature (Claude's memory,
-  ChatGPT's memory, project-level notes). If yours does, offer it: "I can
-  save the current contract to my memory so it survives this session —
-  want me to keep it updated there as we go?" With consent, write the
-  contract there on every confirmed update, and note in the reprint that a
-  memory copy exists. Memory is a backup for continuity, not the canonical
-  home — Phase 4 still ends with the human saving the final block
-  somewhere they own.
-
-  Only when the surface genuinely has no persistence, flag the limitation
-  honestly: if the session ends, the contract is lost. Fine for a single
-  greenfield run; risky for a long retrofit. In that case tell the human
-  to save each reprint somewhere themselves.
-
-**The reprint format (identical in all three forms):**
+**The reprint format (identical in both forms):**
 
 ```
 ─────────────────────────────────────────────────────────────
@@ -225,15 +205,6 @@ signal what got prioritised. Then read, in order:
 
 **MIXED.** Read both lists. The code side tells you what got built; the
 document side tells you what was meant.
-
-**Chat-only (no workspace access).** If you are running in a chat surface
-with no file access (e.g. pasted into ChatGPT, Gemini, or claude.ai), you
-cannot read the evidence yourself. Ask the human to paste or describe the
-relevant material — the strategy doc, recent decisions, what's been built,
-who it's for — and treat what they paste as the evidence for 1B.1. Be
-explicit: "I can't read your workspace from here; paste the [X] doc and the
-[Y] notes, and I'll read those before interviewing." Do not start the
-interview until they have.
 
 ### 1B.1 Read-back: what does this project do today?
 
@@ -407,15 +378,6 @@ identically up to here; only the write step branches.**
   be called and where?"), then create a clearly named "North Star"
   document there. Do not assume a path. Archive or delete the
   `Working draft — North Star` artifact with the human's confirmation.
-- **CHAT-ONLY →** print the four artifacts as a single clean,
-  copy-paste-able markdown block the human can paste wherever they keep
-  the project. Tell them explicitly: this is the canonical artifact, the
-  conversation may not survive, save it somewhere themselves. If the
-  surface has a memory feature and the human consented to memory copies
-  during the ritual, also save the final four artifacts there — and say
-  you did — but this supplements the human's own copy, it does not
-  replace the instruction to save one. This is the universal fallback
-  when there is no workspace or repo to write to.
 
 **If retrofit:** the four artifacts above land as an *amendment*, not a
 replacement. The discipline depends on shape:
@@ -439,7 +401,3 @@ replacement. The discipline depends on shape:
   surface it explicitly to the human and let them choose how to
   reconcile — do not overwrite silently. Do not rewrite the rest of the
   strategy document.
-- **CHAT-ONLY retrofit:** the human pasted material at 1B.0; the
-  reprinted block is the amendment. Remind them to fold it back into
-  wherever the original material lives, and to mark it with today's date
-  so future readers know it was added as a retrofit.
