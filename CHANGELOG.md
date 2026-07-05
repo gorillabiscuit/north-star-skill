@@ -3,6 +3,26 @@
 All notable changes to this skill are documented here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## v0.8.0 — 2026-07-05
+
+Adds a finalisation reveal: the moment a star is set — a fresh kickoff
+or a revise-mode amendment — the ritual shows it once as a full ASCII
+star scene (a five-pointed star, the Metric boxed at centre, Saturn
+alongside). Establishes the display rule the skill had left implicit:
+the plain bordered box is the star's normal display (the working draft
+through the interview, a project's session-start reminder); the full
+scene is reserved for finalisation so it stays a landmark, not
+wallpaper.
+
+- Phase 4.5: run the bundled renderer with the final Metric and show
+  the scene; fall back to the plain box on any failure (no python3,
+  metric too long, no renderer present) — the reveal is celebration,
+  never a blocker.
+- scripts/render-north-star-banner.py: the deterministic renderer
+  (fixed seed). Saturn is the classic Horroroso piece, signature kept.
+- The reprint-format section now states the plain-box-vs-reveal rule
+  explicitly.
+
 ## v0.7.0 — 2026-07-05
 
 Adds revise mode, demanded by a real documented failure (per the

@@ -1,6 +1,6 @@
 ---
 name: north-star
-version: 0.7.0
+version: 0.8.0
 description: Run a structured kickoff interview to converge on a Mission, Metric, Companion, and Boundary for a project of any shape — code, document, or mixed. Reads the existing evidence first when work already exists. Writes the result to the project's natural home (PROJECT.md for code, the primary strategy document for a document project). Use at the start of a new project, when adopting the convention into an existing one, or in revise mode to amend a star that already exists.
 ---
 
@@ -28,7 +28,7 @@ Three modes share the ritual's discipline but enter it differently:
 
 ## How the AI must run this
 - Announce the version first. Your very first line is exactly:
-  `Running north-star v0.7.0.` — then continue into Phase 0. This one line
+  `Running north-star v0.8.0.` — then continue into Phase 0. This one line
   is how the human catches a stale install: if they know a newer release
   exists and the announced version is older, they update before investing
   in a full ritual run. (Maintainers: this literal and the frontmatter
@@ -127,6 +127,13 @@ Fields not yet written appear as "(not yet defined)" rather than being
 omitted — the empty fields build structure and anticipation; do not suppress
 them. The version number tells the human how many revisions the artifact has
 been through.
+
+This plain bordered box is the star's *normal* display — it is what the
+human watches evolve through the interview, and what a project's
+session-start reminder shows. The one exception is Phase 4's finalisation
+reveal (§4.5), where the finished star is shown once as a full ASCII
+scene. Spectacle is reserved for the moment the star is set; the working
+draft stays legible and quiet.
 
 ## Phase 0 — Two quick routing questions
 
@@ -471,3 +478,30 @@ replacement. The discipline depends on shape:
   surface it explicitly to the human and let them choose how to
   reconcile — do not overwrite silently. Do not rewrite the rest of the
   strategy document.
+
+### 4.5 Finalisation reveal — show the star
+
+Once the four artifacts have landed at their destination, mark the
+moment. This is the one and only place the full ASCII star scene
+appears — a fresh kickoff or a revise-mode amendment, either way the
+star has just been *set*, and that deserves more than another plain
+reprint.
+
+Run the bundled renderer with the final **Metric** sentence and show
+its output to the human:
+
+```
+python3 "<this skill's directory>/scripts/render-north-star-banner.py" "<final Metric sentence>"
+```
+
+(The skill's directory is the base path announced when this skill
+loaded.) The renderer prints a star-and-Saturn scene with the Metric
+boxed in the centre. If it exits non-zero (no `python3`, or a Metric too
+long to fit the scene) or the repo has no such script, skip it and
+simply reprint the final star in the plain contract box instead — the
+reveal is celebration, never a blocker.
+
+Everywhere else the star is shown — the working-draft reprints
+throughout the interview, a project's own session-start reminder — uses
+the plain bordered box. The full scene is reserved for this moment so it
+stays a landmark rather than wallpaper.
