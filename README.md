@@ -135,10 +135,14 @@ by pasting the block below as your first message. The agent will run the
 ritual one-shot from there.
 
 **Chat-only limitation.** In a chat surface there is no persistent contract
-file. The reprint block IS the contract; it lives in the conversation. If the
-session ends, the contract is lost — fine for a single greenfield run, risky
-for a long retrofit. Save the reprinted block somewhere yourself if the
-ritual spans more than one sitting.
+file. The reprint block IS the contract; it lives in the conversation. If
+the surface has a memory feature (Claude's memory, ChatGPT's memory), the
+agent will offer to keep a backup copy of the contract there as the ritual
+progresses — with your consent. Where no such feature exists, the session
+scrollback is all there is: if the session ends, the contract is lost —
+fine for a single greenfield run, risky for a long retrofit. Either way,
+save the final reprinted block somewhere you own; a memory copy supplements
+that, it doesn't replace it.
 
 The block below is the canonical body of [`SKILL.md`](./SKILL.md) with the
 YAML frontmatter stripped. Do not edit it here — edit `SKILL.md` and
@@ -165,6 +169,13 @@ Two modes share most of the ritual but diverge at Phase 1:
   by it; write the result as an amendment, not a replacement.
 
 ## How the AI must run this
+- Announce the version first. Your very first line is exactly:
+  `Running north-star v0.5.0.` — then continue into Phase 0. This one line
+  is how the human catches a stale install: if they know a newer release
+  exists and the announced version is older, they update before investing
+  in a full ritual run. (Maintainers: this literal and the frontmatter
+  `version:` above are the two places the version lives — bump both in the
+  same commit, per CHANGELOG discipline.)
 - Interview the human. One focused question at a time. Never dump a questionnaire.
 - A north star is a proxy for delivered value, not a vanity count. Reject vanity
   answers — signups, MAU, page views (the business-reading versions); raw note
@@ -179,20 +190,30 @@ Two modes share most of the ritual but diverge at Phase 1:
   "I picked X because [one-line reason]. Push back if this is wrong."
   Humans skim past defaults presented as decisions but engage with defaults
   presented as questions.
+- If unsure how any step should feel in practice — how opinionated to be,
+  what a read-back sounds like, when exactly to reprint — read
+  `docs/example-run.md` (an abbreviated worked retrofit run) before
+  proceeding. Read it on demand, not by default; it exists to calibrate
+  behaviour, not to be copied verbatim. (Chat-only surfaces without file
+  access: skip this — the ritual text above is self-sufficient.)
 
 ## The North Star contract (working artifact)
 
-From the moment the 1B.1 read-back is confirmed, the evolving North Star lives
+From the moment the read-back is confirmed, the evolving North Star lives
 in a single working artifact the agent reasons against. It is the agent's
-source of truth from 1B.1 until Phase 4 commits the final result. This applies
-in retrofit mode only — greenfield (Phase 1A) has no read-back and creates no
-contract.
+source of truth from that confirmation until Phase 4 commits the final
+result. Both modes have a read-back and both create a contract: retrofit's
+comes from the evidence (1B.1); greenfield's comes from the human's four
+Phase 1A answers (1A.5). The interview is a multi-step ritual in either
+mode, and the human loses track of the evolving state in either mode — the
+contract is the fix, so neither mode goes without it.
 
 **The mechanism (same in every form):**
 
-- The artifact is seeded when the human confirms the 1B.1 read-back: the
-  read-back becomes the **Mission** line; **Metric**, **Companion**, and
-  **Boundary** start as "(not yet defined)". This is v1.
+- The artifact is seeded when the human confirms the read-back (1B.1 in
+  retrofit, 1A.5 in greenfield): the read-back becomes the **Mission**
+  line; **Metric**, **Companion**, and **Boundary** start as
+  "(not yet defined)". This is v1.
 - The agent never changes the artifact unilaterally. Every revision needs
   explicit human confirmation first.
 - When the human substantively corrects the read-back or a candidate, the
@@ -200,9 +221,11 @@ contract.
   One current version, never a history. Bump vN on every confirmed update.
 - The artifact is reprinted (in the block below) at two kinds of moment:
   (a) immediately after any confirmed update, so the human sees the change
-  as it happens; and (b) at every phase boundary after 1B.1 — the start of
-  1B.2, 1B.3, 1B.4, 1B.4.5, 1B.5, Phase 2, Phase 3, and Phase 4 — so the
-  destination is in view before evaluating the next step.
+  as it happens; and (b) at every phase boundary after the seeding
+  read-back — in retrofit, the start of 1B.2, 1B.3, 1B.4, 1B.4.5, 1B.5,
+  Phase 2, Phase 3, and Phase 4; in greenfield, the start of Phase 2,
+  Phase 3, and Phase 4 — so the destination is in view before evaluating
+  the next step.
 - At Phase 4, once the four artifacts land at their destination, the working
   artifact has served its purpose and is retired (see Phase 4 for what
   "retired" means in each form).
@@ -220,10 +243,22 @@ contract.
 - **Chat-only →** no file. The reprint block IS the contract; it lives in
   the conversation scrollback. The mechanism is the same — single current
   version, bumped on confirmed update, reprinted at every phase boundary —
-  but the storage is the chat itself. Flag the limitation honestly: if the
-  session ends, the contract is lost. Fine for a single greenfield run;
-  risky for a long retrofit. In chat-only retrofit, tell the human to save
-  each reprint somewhere themselves.
+  but the storage is the chat itself.
+
+  **Before shrugging at data loss, check what persistence you actually
+  have.** Many chat surfaces now carry a memory feature (Claude's memory,
+  ChatGPT's memory, project-level notes). If yours does, offer it: "I can
+  save the current contract to my memory so it survives this session —
+  want me to keep it updated there as we go?" With consent, write the
+  contract there on every confirmed update, and note in the reprint that a
+  memory copy exists. Memory is a backup for continuity, not the canonical
+  home — Phase 4 still ends with the human saving the final block
+  somewhere they own.
+
+  Only when the surface genuinely has no persistence, flag the limitation
+  honestly: if the session ends, the contract is lost. Fine for a single
+  greenfield run; risky for a long retrofit. In that case tell the human
+  to save each reprint somewhere themselves.
 
 **The reprint format (identical in all three forms):**
 
@@ -285,7 +320,17 @@ into a non-blank project causes real damage.
 3. What one job do they hire it to do?
 4. If it vanished tomorrow, what specifically would they miss?
 
-Once those four are answered, skip to Phase 2.
+### 1A.5 Read-back and seed the contract
+
+Distil the four answers into a single sentence: "So: this project does X
+for Y so that Z." Read it back to the human and let them correct it. When
+it lands, seed the working artifact (per "The North Star contract" above)
+as v1: the confirmed sentence becomes the **Mission** line; the other
+fields are "(not yet defined)". From here the contract rules apply exactly
+as in retrofit — never change it unilaterally, reprint at every phase
+boundary and immediately after any confirmed update.
+
+Then go to Phase 2.
 
 ## Phase 1B — Retrofit: read the evidence, then interview
 
@@ -457,7 +502,7 @@ contradictions often contain the real answer.
 
 ## Phase 2 — The value moment
 
-↻ If a North Star contract exists (retrofit), reprint its block here (see "The North Star contract").
+↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
 
 5. What is the single moment the audience receives the core value? Name the event.
 6. Does that moment rely on what's hard to copy here?
@@ -466,7 +511,7 @@ contradictions often contain the real answer.
 
 ## Phase 3 — Candidates
 
-↻ If a North Star contract exists (retrofit), reprint its block here (see "The North Star contract").
+↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
 
 Propose 2-3 candidate metrics, each a countable thing tied to the value moment.
 (In retrofit mode, the Phase 1B.4 strawmen are already candidates — bring them
@@ -480,7 +525,7 @@ forward and add at least one more for contrast.) Pressure-test each:
 
 ## Phase 4 — Converge and commit
 
-↻ If a North Star contract exists (retrofit), reprint its block here (see "The North Star contract").
+↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
 
 Produce four distinct artifacts. Do NOT conflate them into a single
 statement — a conflated North Star is fragile: the metric drifts and drags
@@ -512,8 +557,12 @@ identically up to here; only the write step branches.**
 - **CHAT-ONLY →** print the four artifacts as a single clean,
   copy-paste-able markdown block the human can paste wherever they keep
   the project. Tell them explicitly: this is the canonical artifact, the
-  conversation may not survive, save it somewhere themselves. This is the
-  universal fallback when there is no workspace or repo to write to.
+  conversation may not survive, save it somewhere themselves. If the
+  surface has a memory feature and the human consented to memory copies
+  during the ritual, also save the final four artifacts there — and say
+  you did — but this supplements the human's own copy, it does not
+  replace the instruction to save one. This is the universal fallback
+  when there is no workspace or repo to write to.
 
 **If retrofit:** the four artifacts above land as an *amendment*, not a
 replacement. The discipline depends on shape:

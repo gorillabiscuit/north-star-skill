@@ -3,6 +3,34 @@
 All notable changes to this skill are documented here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## v0.5.0 — 2026-07-05
+
+Hardens the ritual against the failure mode that motivated the release: a
+user ran the skill from an install silently frozen at v0.1.0 — three
+releases stale, missing the contract mechanism entirely — with nothing in
+the ritual to reveal it. Also closes the greenfield/retrofit scaffolding
+gap and teaches chat-only mode to use memory where the surface has one.
+
+- Version self-announcement: the agent's literal first line is now
+  `Running north-star vX.Y.Z.`, so a stale install is visible in the
+  first second of a run instead of never. The version literal lives in
+  two places (frontmatter + announcement line); bump both per release.
+- Greenfield parity: Phase 1A gains a 1A.5 read-back that seeds the
+  North Star contract, exactly as retrofit's 1B.1 does. The contract and
+  its phase-boundary reprints were retrofit-only; the reasons they exist
+  (multi-step interview, human loses track of evolving state) apply to
+  greenfield too. Phase 2/3/4 reprint markers are now unconditional.
+- Chat-only memory integration: when the chat surface has a persistent
+  memory feature, the agent offers to keep a consented backup copy of the
+  contract there — updated on every confirmed revision, final artifacts
+  saved at Phase 4 — instead of only warning that scrollback is lossy.
+  Memory supplements the human's own saved copy; it never replaces it.
+- Worked example: docs/example-run.md, an abbreviated CODE-retrofit
+  transcript showing correct behaviour at each step (read-back
+  correction, contract seeding, evidence-anchored questions, the 1B.4.5
+  re-grounding catch, Phase 4 amendment). Referenced from SKILL.md as
+  read-on-demand calibration, not loaded by default.
+
 ## v0.4.0 — 2026-05-29
 
 Generalises the ritual from code-only to any project shape. The interview
