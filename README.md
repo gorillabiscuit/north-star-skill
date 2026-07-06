@@ -48,6 +48,13 @@ The four artifacts are universal; only the write step branches:
   under a clearly named "North Star" section. If no such document exists, the
   agent asks where it should live rather than assuming a path.
 
+Once the star lands, the ritual marks the moment with a **finalisation
+reveal** — the finished star shown once as a full ASCII scene (a five-pointed
+star, the Metric boxed at centre, Saturn alongside). Every other display —
+the working draft you watch evolve through the interview, a project's
+session-start reminder — uses a plain bordered box. Spectacle is reserved for
+the moment the star is set, so it stays a landmark rather than wallpaper.
+
 ## Install / use matrix
 
 | Surface | How to run it |
