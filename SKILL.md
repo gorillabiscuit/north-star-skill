@@ -1,7 +1,7 @@
 ---
 name: north-star
-version: 0.6.0
-description: Run a structured kickoff interview to converge on a Mission, Metric, Companion, and Boundary for a project of any shape — code, document, or mixed. Reads the existing evidence first when work already exists. Writes the result to the project's natural home (PROJECT.md for code, the primary strategy document for a document project). Use at the start of a new project, or when adopting the convention into an existing one.
+version: 0.7.0
+description: Run a structured kickoff interview to converge on a Mission, Metric, Companion, and Boundary for a project of any shape — code, document, or mixed. Reads the existing evidence first when work already exists. Writes the result to the project's natural home (PROJECT.md for code, the primary strategy document for a document project). Use at the start of a new project, when adopting the convention into an existing one, or in revise mode to amend a star that already exists.
 ---
 
 # North Star kickoff
@@ -14,16 +14,21 @@ The ritual is universal across project shapes. What differs by shape is what
 counts as evidence in the read-first step (1B.0) and where the result lands at
 Phase 4. The interview itself does not change.
 
-Two modes share most of the ritual but diverge at Phase 1:
+Three modes share the ritual's discipline but enter it differently:
 
 - **Greenfield** — nothing built or written yet. Interview the human from blank.
 - **Retrofit** — work already exists (code shipped, docs written, decisions
   made, real or pilot audience). Read the evidence first; interview informed
   by it; write the result as an amendment, not a replacement.
+- **Revise** — a filled North Star already exists and the human wants to
+  change it: a field proved wrong, or the world changed under it. A short
+  targeted pass (Phase 1C), not the full interview. Exists because running
+  the full ritual for a small amendment was tried in practice and abandoned
+  as burdensome (2026-07-05).
 
 ## How the AI must run this
 - Announce the version first. Your very first line is exactly:
-  `Running north-star v0.6.0.` — then continue into Phase 0. This one line
+  `Running north-star v0.7.0.` — then continue into Phase 0. This one line
   is how the human catches a stale install: if they know a newer release
   exists and the announced version is older, they update before investing
   in a full ritual run. (Maintainers: this literal and the frontmatter
@@ -54,18 +59,20 @@ Two modes share most of the ritual but diverge at Phase 1:
 From the moment the read-back is confirmed, the evolving North Star lives
 in a single working artifact the agent reasons against. It is the agent's
 source of truth from that confirmation until Phase 4 commits the final
-result. Both modes have a read-back and both create a contract: retrofit's
-comes from the evidence (1B.1); greenfield's comes from the human's four
-Phase 1A answers (1A.5). The interview is a multi-step ritual in either
-mode, and the human loses track of the evolving state in either mode — the
-contract is the fix, so neither mode goes without it.
+result. Every mode creates a contract: retrofit's comes from the evidence
+(1B.1); greenfield's comes from the human's four Phase 1A answers (1A.5);
+revise's is seeded directly from the current star (1C.0), all four fields
+already filled. The interview is a multi-step ritual in every mode, and
+the human loses track of the evolving state in every mode — the contract
+is the fix, so no mode goes without it.
 
 **The mechanism (same in every form):**
 
 - The artifact is seeded when the human confirms the read-back (1B.1 in
   retrofit, 1A.5 in greenfield): the read-back becomes the **Mission**
   line; **Metric**, **Companion**, and **Boundary** start as
-  "(not yet defined)". This is v1.
+  "(not yet defined)". This is v1. (Revise seeds differently: the current
+  star's four filled fields, at 1C.0.)
 - The agent never changes the artifact unilaterally. Every revision needs
   explicit human confirmation first.
 - When the human substantively corrects the read-back or a candidate, the
@@ -76,8 +83,8 @@ contract is the fix, so neither mode goes without it.
   as it happens; and (b) at every phase boundary after the seeding
   read-back — in retrofit, the start of 1B.2, 1B.3, 1B.4, 1B.4.5, 1B.5,
   Phase 2, Phase 3, and Phase 4; in greenfield, the start of Phase 2,
-  Phase 3, and Phase 4 — so the destination is in view before evaluating
-  the next step.
+  Phase 3, and Phase 4; in revise, the start of 1C.2 and Phase 4 — so the
+  destination is in view before evaluating the next step.
 - At Phase 4, once the four artifacts land at their destination, the working
   artifact has served its purpose and is retired (see Phase 4 for what
   "retired" means in each form).
@@ -143,9 +150,16 @@ gets written at Phase 4.
 
 - **GREENFIELD** — nothing built or written yet. Go to Phase 1A.
 - **EXISTS** — work already exists that should be read first. Go to Phase 1B.
+- **REVISE** — a filled North Star already exists (no `<...>` placeholders)
+  AND the human's stated goal is to change it, not create one. Go to
+  Phase 1C. If the star exists but the human wants a ground-up rethink,
+  that is EXISTS, not REVISE — run the full retrofit.
 
-When in doubt, treat as EXISTS. Reading-first is cheap; writing-from-blank
-into a non-blank project causes real damage.
+When in doubt between GREENFIELD and EXISTS, treat as EXISTS. Reading-first
+is cheap; writing-from-blank into a non-blank project causes real damage.
+When in doubt between EXISTS and REVISE, ask the human directly: "small
+amendment, or rethink?" — the two paths cost very different amounts of
+their time.
 
 ## Phase 1A — Greenfield: the job (ask one at a time)
 1. In one sentence, what is this project?
@@ -324,9 +338,65 @@ it explicitly. There are two readings, and both belong on the table:
 Don't let the human resolve this in one breath. Sit with it. The
 contradictions often contain the real answer.
 
+## Phase 1C — Revise: amend an existing star
+
+The short path. A revision is a targeted amendment with a stated reason —
+not a re-run of the interview. Everything here happens in plain
+conversation; keep the ritual vocabulary out of the questions.
+
+### 1C.0 Read the current star and what changed
+
+Read the existing North Star at its destination (PROJECT.md or the
+strategy document), then just enough evidence to see what changed since
+it was written — recent commits or edits, anything the star's own
+Companion promised that has since been built, cut, or disproven. Seed the
+working artifact from the CURRENT star: all four fields filled, this is
+v1. (Unlike kickoff, nothing starts "(not yet defined)".)
+
+### 1C.1 Print the star, name the failure
+
+Print the current star verbatim. Then ask, in plain words: **which fields
+are wrong, and what happened in the world to make them wrong?** A
+revision needs a nameable reason — new evidence, a wrong assumption
+surfacing, promised machinery that now exists, a boundary line that has
+since been executed. "It could read better" is not a reason; wordsmithing
+without a failure is exactly the drift this convention exists to prevent.
+If the human cannot name what changed, stop and say so.
+
+**Escape hatch — check it here and keep checking:** if the human names
+problems in three or more fields, or the Mission itself no longer
+describes the project, this is not a revision. Say so and switch to the
+full retrofit (Phase 1B) — the discount path must not become a back door
+around the pressure tests.
+
+### 1C.2 Propose the amendment, test only what changed
+
+↻ Reprint the North Star contract block here (see "The North Star contract").
+
+Propose new text for ONLY the fields the human named, each with one line
+of reasoning tied to the stated failure. Reprint unchanged fields
+unchanged — never improve them in passing.
+
+The old discipline still applies, scaled to the change:
+
+- A changed **Metric** goes through the Phase 3 pressure tests (value
+  proxy, gameable, incentive, leading, traceable) before it lands.
+- A changed **Mission** gets a read-back: restate it, let the human
+  correct it, confirm before proceeding.
+- A changed **Companion** or **Boundary** must state its evidence — what
+  was built, cut, or learned that the new line reflects.
+
+Each confirmed change bumps the contract version, exactly as in the full
+ritual. Then go to Phase 4: the result lands as a dated amendment — the
+existing dated parenthetical gains `; revised YYYY-MM-DD`, and the old
+text of any changed field is preserved per Phase 4's
+existing-block discipline (show old and new; the human chooses how the
+old text is kept). Never silently overwrite, never touch the rest of the
+document.
+
 ## Phase 2 — The value moment
 
-↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
+↻ Reprint the North Star contract block here (see "The North Star contract").
 
 5. What is the single moment the audience receives the core value? Name the event.
 6. Does that moment rely on what's hard to copy here?
@@ -335,7 +405,7 @@ contradictions often contain the real answer.
 
 ## Phase 3 — Candidates
 
-↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
+↻ Reprint the North Star contract block here (see "The North Star contract").
 
 Propose 2-3 candidate metrics, each a countable thing tied to the value moment.
 (In retrofit mode, the Phase 1B.4 strawmen are already candidates — bring them
@@ -349,7 +419,7 @@ forward and add at least one more for contrast.) Pressure-test each:
 
 ## Phase 4 — Converge and commit
 
-↻ Reprint the North Star contract block here (see "The North Star contract"). Both modes have one by now.
+↻ Reprint the North Star contract block here (see "The North Star contract"). Every mode has one by now.
 
 Produce four distinct artifacts. Do NOT conflate them into a single
 statement — a conflated North Star is fragile: the metric drifts and drags

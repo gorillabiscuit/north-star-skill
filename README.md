@@ -24,13 +24,17 @@ Phase 0 routes the rest of the ritual with two sequential questions:
   project (notes, docs, decks, research in a workspace like Cowork, a Projects
   folder, Notion), or **MIXED**? Shape drives what gets read and where the
   result lands.
-- **State.** **GREENFIELD** (nothing built or written yet) or **EXISTS** (work
-  already exists that should be read first)? State drives whether the agent
-  interviews from blank (Phase 1A) or reads the evidence first and amends
-  (Phase 1B).
+- **State.** **GREENFIELD** (nothing built or written yet), **EXISTS** (work
+  already exists that should be read first), or **REVISE** (a filled North
+  Star already exists and needs a targeted amendment)? State drives whether
+  the agent interviews from blank (Phase 1A), reads the evidence first and
+  amends (Phase 1B), or runs the short revision pass (Phase 1C).
 
-When in doubt, treat as EXISTS — reading first is cheap; writing-from-blank
-into a non-blank project causes real damage.
+When in doubt between GREENFIELD and EXISTS, treat as EXISTS — reading first
+is cheap; writing-from-blank into a non-blank project causes real damage.
+REVISE is deliberately narrow: it changes only the fields with a nameable
+failure behind them, and escalates to the full retrofit if the star needs a
+rethink rather than an amendment.
 
 ## Where the result goes
 

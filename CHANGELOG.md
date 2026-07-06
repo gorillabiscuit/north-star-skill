@@ -3,6 +3,30 @@
 All notable changes to this skill are documented here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## v0.7.0 — 2026-07-05
+
+Adds revise mode, demanded by a real documented failure (per the
+Boundary's own rule for interview changes): on 2026-07-05 the maintainer
+needed a small amendment to an existing star, the skill offered only the
+full kickoff interview, and the run was abandoned mid-ritual as
+burdensome.
+
+- Phase 0 Q2 gains a third state, REVISE: a filled star exists and the
+  goal is to change it, not create it. Routes to the new Phase 1C.
+- Phase 1C — the short path: read the current star and what changed;
+  print it and ask which fields are wrong and what happened in the world
+  to make them wrong (a revision needs a nameable failure — wordsmithing
+  without one is refused); propose new text for only the named fields;
+  land as a dated amendment (`; revised YYYY-MM-DD`).
+- Scaled discipline, not skipped discipline: a changed Metric still runs
+  the Phase 3 pressure tests; a changed Mission still gets a read-back;
+  Companion/Boundary changes must state their evidence.
+- Escape hatch: three or more fields wrong, or a Mission that no longer
+  describes the project, is a rethink — the agent must switch to the
+  full retrofit rather than let the discount path bypass the ritual.
+- Contract seeding for revise: all four fields start filled from the
+  current star, instead of "(not yet defined)".
+
 ## v0.6.0 — 2026-07-05
 
 Scope-cut release, executing the Boundary line of this repo's own North
